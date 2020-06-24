@@ -1,6 +1,6 @@
 <?php
 
-namespace quasiris\CategoryStorage\Communication\Controllers;
+namespace Quasiris\Zed\QuasirisCatchingCategoryEvents\Communication\Controllers;
 
 use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
 

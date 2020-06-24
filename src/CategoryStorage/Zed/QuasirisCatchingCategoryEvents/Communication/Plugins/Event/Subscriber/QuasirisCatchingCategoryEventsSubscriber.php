@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace quasiris\CategoryStorage\Communication\Plugins\Event\Subscriber;
+namespace Quasiris\Zed\QuasirisCatchingCategoryEvents\Communication\Plugins\Event\Subscriber;
 
 use Spryker\Zed\Category\Dependency\CategoryEvents;
 use Spryker\Zed\Event\Dependency\EventCollectionInterface;
@@ -13,7 +13,7 @@ use Spryker\Zed\Event\Dependency\Plugin\EventSubscriberInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\ProductCategory\Dependency\ProductCategoryEvents;
 
-use quasiris\CategoryStorage\Communication\Plugins\Event\Listener\KacperProductCategoryListener;
+use Quasiris\Zed\QuasirisCatchingCategoryEvents\Communication\Plugins\Event\Listener\KacperProductCategoryListener;
 
 /**
  * @method \Spryker\Zed\ProductCategoryStorage\Communication\ProductCategoryStorageCommunicationFactory getFactory()
@@ -23,12 +23,6 @@ use quasiris\CategoryStorage\Communication\Plugins\Event\Listener\KacperProductC
  */
 class KacperProductCategorySubscriber extends AbstractPlugin implements EventSubscriberInterface
 {
-    public $URL_TO_API;
-
-    public function __construct($URL_TO_API) {
-        $this->URL_TO_API = $URL_TO_API;
-    }
-
     /**
      * @api
      *
@@ -53,30 +47,30 @@ class KacperProductCategorySubscriber extends AbstractPlugin implements EventSub
     //create
     protected function addCategoryCreateCategoryListener(EventCollectionInterface $eventCollection)
     {
-        $eventCollection->addListenerQueued(CategoryEvents::CATEGORY_AFTER_CREATE, new KacperProductCategoryListener($this->URL_TO_API));
+        $eventCollection->addListenerQueued(CategoryEvents::CATEGORY_AFTER_CREATE, new KacperProductCategoryListener());
     }
 
     //update
     protected function addCategoryUpdateCategoryListener(EventCollectionInterface $eventCollection)
     {
-        $eventCollection->addListenerQueued(CategoryEvents::CATEGORY_AFTER_UPDATE, new KacperProductCategoryListener($this->URL_TO_API));
+        $eventCollection->addListenerQueued(CategoryEvents::CATEGORY_AFTER_UPDATE, new KacperProductCategoryListener());
     }
 
     //delete 
     protected function addCategoryDeleteCategoryListener(EventCollectionInterface $eventCollection)
     {
-        $eventCollection->addListenerQueued(CategoryEvents::CATEGORY_AFTER_DELETE, new KacperProductCategoryListener($this->URL_TO_API));
+        $eventCollection->addListenerQueued(CategoryEvents::CATEGORY_AFTER_DELETE, new KacperProductCategoryListener());
     }
 
     //assigned prodcut to category
     protected function assignedCategoryToProductListener(EventCollectionInterface $eventCollection)
     {
-        $eventCollection->addListenerQueued(ProductCategoryEvents::PRODUCT_CATEGORY_ASSIGNED, new KacperProductCategoryListener($this->URL_TO_API));
+        $eventCollection->addListenerQueued(ProductCategoryEvents::PRODUCT_CATEGORY_ASSIGNED, new KacperProductCategoryListener());
     }
 
     //unasigned prodcut to category
     protected function unassignedCategoryToProductListener(EventCollectionInterface $eventCollection)
     {
-        $eventCollection->addListenerQueued(ProductCategoryEvents::PRODUCT_CATEGORY_UNASSIGNED, new KacperProductCategoryListener($this->URL_TO_API));
+        $eventCollection->addListenerQueued(ProductCategoryEvents::PRODUCT_CATEGORY_UNASSIGNED, new KacperProductCategoryListener());
     }
 }

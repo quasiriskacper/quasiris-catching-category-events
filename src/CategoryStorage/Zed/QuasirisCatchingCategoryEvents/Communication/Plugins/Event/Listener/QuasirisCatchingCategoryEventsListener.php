@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace quasiris\CategoryStorage\Communication\Plugins\Event\Listener;
+namespace Quasiris\Zed\QuasirisCatchingCategoryEvents\Communication\Plugins\Event\Listener;
 
 use Orm\Zed\ProductBundle\Persistence\Map\SpyProductBundleTableMap;
 use Orm\Zed\Category\Persistence\Map\SpyCategoryAttributeTableMap;
@@ -16,8 +16,8 @@ use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Spryker\Shared\Kernel\Transfer\TransferInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
-use quasiris\CategoryStorage\Communication\Controllers\SenderController;
-use quasiris\CategoryStorage\Communication\Controllers\MixedController;
+use Quasiris\Zed\QuasirisCatchingCategoryEvents\Communication\Controllers\SenderController;
+use Quasiris\Zed\QuasirisCatchingCategoryEvents\Communication\Controllers\MixedController;
 use Spryker\Zed\PropelOrm\Business\Transaction\DatabaseTransactionHandlerTrait;
 
 /**
@@ -28,12 +28,10 @@ class KacperProductCategoryListener extends AbstractPlugin implements EventBulkH
 {
     use DatabaseTransactionHandlerTrait;
     private $sender;
-    private $URL_TO_API;
 
-    public function __construct($URL_TO_API) {
+    public function __construct() {
         $this->sender = new SenderController();
         $this->mixed = new MixedController();
-        $this->URL_TO_API = $URL_TO_API;
     }
 
     /**

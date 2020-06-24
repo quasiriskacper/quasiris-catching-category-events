@@ -5,7 +5,8 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace quasiris\CategoryStorage;
+namespace Quasiris\Zed\QuasirisCatchingCategoryEvents;
+
 
 use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\CategoryStorage\Dependency\Facade\CategoryStorageToEventBehaviorFacadeBridge;
@@ -18,7 +19,7 @@ use Spryker\Zed\Kernel\Container;
 /**
  * @method \Spryker\Zed\CategoryStorage\CategoryStorageConfig getConfig()
  */
-class CategoryStorageDependencyProvider extends AbstractBundleDependencyProvider
+class QuasirisCatchingCategoryEventsDependencyProvider extends AbstractBundleDependencyProvider
 {
     public const FACADE_PRODUCT = 'FACADE_PRODUCT';
     public const FACADE_LOCALE = 'FACADE_LOCALE';
