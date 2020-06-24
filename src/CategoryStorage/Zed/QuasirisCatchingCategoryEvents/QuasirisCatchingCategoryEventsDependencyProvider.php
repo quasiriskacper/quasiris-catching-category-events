@@ -23,6 +23,7 @@ class QuasirisCatchingCategoryEventsDependencyProvider extends AbstractBundleDep
 {
     public const FACADE_PRODUCT = 'FACADE_PRODUCT';
     public const FACADE_LOCALE = 'FACADE_LOCALE';
+    public const FACADE_PRODUCT_CATEGORY = 'FACADE_PRODUCT_CATEGORY';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -34,6 +35,7 @@ class QuasirisCatchingCategoryEventsDependencyProvider extends AbstractBundleDep
         $container = parent::provideCommunicationLayerDependencies($container);
         $container = $this->addProductFacade($container);
         $container = $this->addLocaleFacade($container);
+        $container = $this->addProductCategoryFacade($container);
         return $container;
     }
 
@@ -49,6 +51,14 @@ class QuasirisCatchingCategoryEventsDependencyProvider extends AbstractBundleDep
     {
         $container[static::FACADE_LOCALE] = function (Container $container) {
             return $container->getLocator()->locale()->facade();
+        };
+        return $container;
+    }
+
+    protected function addProductCategoryFacade(Container $container): Container
+    {
+        $container[static::FACADE_PRODUCT_CATEGORY] = function (Container $container) {
+            return $container->getLocator()->productCategory()->facade();
         };
         return $container;
     }

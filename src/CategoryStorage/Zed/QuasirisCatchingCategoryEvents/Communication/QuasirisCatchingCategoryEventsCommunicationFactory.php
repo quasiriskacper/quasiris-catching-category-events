@@ -14,7 +14,9 @@ class QuasirisCatchingCategoryEventsCommunicationFactory extends AbstractCommuni
     public function getLocaleFacede() {
         return $this->getProvidedDependency(QuasirisCatchingCategoryEventsDependencyProvider::FACADE_LOCALE);
     }
-
+    public function getProductCategoryFacede() {
+        return $this->getProvidedDependency(QuasirisCatchingCategoryEventsDependencyProvider::FACADE_PRODUCT_CATEGORY);
+    }
 
 }
 
