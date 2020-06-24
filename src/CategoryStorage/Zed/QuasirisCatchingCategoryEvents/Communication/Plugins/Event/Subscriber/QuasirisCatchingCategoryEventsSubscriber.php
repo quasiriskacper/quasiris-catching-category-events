@@ -21,7 +21,7 @@ use Quasiris\Zed\QuasirisCatchingCategoryEvents\Communication\Plugins\Event\List
  * @method \Spryker\Zed\ProductCategoryStorage\ProductCategoryStorageConfig getConfig()
  * @method \Spryker\Zed\ProductCategoryStorage\Persistence\ProductCategoryStorageQueryContainerInterface getQueryContainer()
  */
-class KacperProductCategorySubscriber extends AbstractPlugin implements EventSubscriberInterface
+class QuasirisCatchingCategoryEventsSubscriber extends AbstractPlugin implements EventSubscriberInterface
 {
     /**
      * @api
