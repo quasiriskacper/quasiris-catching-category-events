@@ -16,7 +16,7 @@ class SenderController extends AbstractController {
         $mixed = new MixedController();
 
         $id = (isset($params['productId'])) ? $params['productId'] : null;
-        $type = (isset($params['type'])) ? $params['type'] : null;
+        $type = 'categories';
         $data_to_send = [];
         $response_from_main_api = null;
         $url_main_api = null;
