@@ -13,7 +13,7 @@ use Spryker\Zed\Event\Dependency\Plugin\EventSubscriberInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\ProductCategory\Dependency\ProductCategoryEvents;
 
-use Quasiris\Zed\QuasirisCatchingCategoryEvents\Communication\Plugins\Event\Listener\KacperProductCategoryListener;
+use Quasiris\Zed\QuasirisCatchingCategoryEvents\Communication\Plugins\Event\Listener\QuasirisCatchingCategoryEventsListener;
 
 /**
  * @method \Spryker\Zed\ProductCategoryStorage\Communication\ProductCategoryStorageCommunicationFactory getFactory()
@@ -47,30 +47,30 @@ class QuasirisCatchingCategoryEventsSubscriber extends AbstractPlugin implements
     //create
     protected function addCategoryCreateCategoryListener(EventCollectionInterface $eventCollection)
     {
-        $eventCollection->addListenerQueued(CategoryEvents::CATEGORY_AFTER_CREATE, new KacperProductCategoryListener());
+        $eventCollection->addListenerQueued(CategoryEvents::CATEGORY_AFTER_CREATE, new QuasirisCatchingCategoryEventsListener());
     }
 
     //update
     protected function addCategoryUpdateCategoryListener(EventCollectionInterface $eventCollection)
     {
-        $eventCollection->addListenerQueued(CategoryEvents::CATEGORY_AFTER_UPDATE, new KacperProductCategoryListener());
+        $eventCollection->addListenerQueued(CategoryEvents::CATEGORY_AFTER_UPDATE, new QuasirisCatchingCategoryEventsListener());
     }
 
     //delete 
     protected function addCategoryDeleteCategoryListener(EventCollectionInterface $eventCollection)
     {
-        $eventCollection->addListenerQueued(CategoryEvents::CATEGORY_AFTER_DELETE, new KacperProductCategoryListener());
+        $eventCollection->addListenerQueued(CategoryEvents::CATEGORY_AFTER_DELETE, new QuasirisCatchingCategoryEventsListener());
     }
 
     //assigned prodcut to category
     protected function assignedCategoryToProductListener(EventCollectionInterface $eventCollection)
     {
-        $eventCollection->addListenerQueued(ProductCategoryEvents::PRODUCT_CATEGORY_ASSIGNED, new KacperProductCategoryListener());
+        $eventCollection->addListenerQueued(ProductCategoryEvents::PRODUCT_CATEGORY_ASSIGNED, new QuasirisCatchingCategoryEventsListener());
     }
 
     //unasigned prodcut to category
     protected function unassignedCategoryToProductListener(EventCollectionInterface $eventCollection)
     {
-        $eventCollection->addListenerQueued(ProductCategoryEvents::PRODUCT_CATEGORY_UNASSIGNED, new KacperProductCategoryListener());
+        $eventCollection->addListenerQueued(ProductCategoryEvents::PRODUCT_CATEGORY_UNASSIGNED, new QuasirisCatchingCategoryEventsListener());
     }
 }

@@ -24,7 +24,7 @@ use Spryker\Zed\PropelOrm\Business\Transaction\DatabaseTransactionHandlerTrait;
  * @method \Spryker\Zed\ProductRelation\Business\ProductRelationFacade getFacade()
  * @method \Spryker\Zed\ProductRelation\Communication\ProductRelationCommunicationFactory getFactory()
  */
-class KacperProductCategoryListener extends AbstractPlugin implements EventBulkHandlerInterface
+class QuasirisCatchingCategoryEventsListener extends AbstractPlugin implements EventBulkHandlerInterface
 {
     use DatabaseTransactionHandlerTrait;
     private $sender;
