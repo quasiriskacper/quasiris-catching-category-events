@@ -68,7 +68,7 @@ class QuasirisCatchingCategoryEventsListener extends AbstractPlugin implements E
             $categories = $this->mixed->getProductCategories($i, $locale);
             
             $data = $this->mixed->createArrayToSend(
-                'KacperProductCategoryListener',
+                'QuasirisCatchingCategoryEventsListener',
                 $eventName,
                 $abstract,
                 $concrete,
