@@ -1,4 +1,4 @@
-# Spryker - QuasirisSenderPlugin
+# Spryker - QuasirisCatchingCategoryEvents
 
 This library is used to catching events about product from category (abstract, concrete, categories) as like:
 - assign, 
