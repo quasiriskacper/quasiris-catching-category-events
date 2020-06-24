@@ -10,8 +10,16 @@ namespace Quasiris\Zed\QuasirisCatchingCategoryEvents;
 use Synchronization\SynchronizationConfig;
 use Spryker\Zed\CategoryStorage\CategoryStorageConfig as SprykerCategoryStorageConfig;
 
-class CategoryStorageConfig extends SprykerCategoryStorageConfig
+use Quasiris\Zed\QuasirisCatchingCategoryEvents\Shared\QuasirisCatchingCategoryEventsConstants;
+
+
+class QuasirisCatchingCategoryEventsConfig extends SprykerCategoryStorageConfig
 {
+
+    public function getMySetting(): array
+    {
+        return $this->get(QuasirisCatchingCategoryEventsConstants::MY_SETTING);
+    }
     /**
      * @return string|null
      */

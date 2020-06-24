@@ -76,7 +76,7 @@ class KacperProductCategoryListener extends AbstractPlugin implements EventBulkH
                 $i
             );
 
-            $this->sender->getDataFromApi($data, $this->URL_TO_API);
+            $this->sender->getDataFromApi($data, $this->getConfig()->getMySetting());
         }
     }
 }
