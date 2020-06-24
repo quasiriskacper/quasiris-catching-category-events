@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Quasiris\Zed\QuasirisCatchingCategoryEventsConstants\Shared;
+namespace Quasiris\Zed\QuasirisCatchingCategoryEvents\Shared;
 
 /**
  * Declares global environment configuration keys. Do not use it for other class constants.
