@@ -9,6 +9,7 @@
             "email": "kacper.dygas@quasiris.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {},
     "autoload": {
         "psr-4": {
