@@ -14,6 +14,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\ProductCategory\Dependency\ProductCategoryEvents;
 
 use Quasiris\Zed\QuasirisCatchingCategoryEvents\Communication\Plugins\Event\Listener\QuasirisCatchingCategoryEventsListener;
+use Quasiris\Zed\QuasirisCatchingCategoryEvents\Communication\Plugins\Event\Listener\QuasirisCatchingProductCategoryEventsListener;
 
 /**
  * @method \Spryker\Zed\ProductCategoryStorage\Communication\ProductCategoryStorageCommunicationFactory getFactory()
@@ -44,12 +45,6 @@ class QuasirisCatchingCategoryEventsSubscriber extends AbstractPlugin implements
         return $eventCollection;
     }
 
-    //create
-    protected function addCategoryCreateCategoryListener(EventCollectionInterface $eventCollection)
-    {
-        $eventCollection->addListenerQueued(CategoryEvents::CATEGORY_AFTER_CREATE, new QuasirisCatchingCategoryEventsListener());
-    }
-
     //update
     protected function addCategoryUpdateCategoryListener(EventCollectionInterface $eventCollection)
     {
@@ -65,12 +60,12 @@ class QuasirisCatchingCategoryEventsSubscriber extends AbstractPlugin implements
     //assigned prodcut to category
     protected function assignedCategoryToProductListener(EventCollectionInterface $eventCollection)
     {
-        $eventCollection->addListenerQueued(ProductCategoryEvents::PRODUCT_CATEGORY_ASSIGNED, new QuasirisCatchingCategoryEventsListener());
+        $eventCollection->addListenerQueued(ProductCategoryEvents::PRODUCT_CATEGORY_ASSIGNED, new QuasirisCatchingProductCategoryEventsListener());
     }
 
     //unasigned prodcut to category
     protected function unassignedCategoryToProductListener(EventCollectionInterface $eventCollection)
     {
-        $eventCollection->addListenerQueued(ProductCategoryEvents::PRODUCT_CATEGORY_UNASSIGNED, new QuasirisCatchingCategoryEventsListener());
+        $eventCollection->addListenerQueued(ProductCategoryEvents::PRODUCT_CATEGORY_UNASSIGNED, new QuasirisCatchingProductCategoryEventsListener());
     }
 }

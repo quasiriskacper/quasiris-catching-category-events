@@ -20,7 +20,7 @@ use Spryker\Zed\PropelOrm\Business\Transaction\DatabaseTransactionHandlerTrait;
  * @method \Spryker\Zed\ProductRelation\Business\ProductRelationFacade getFacade()
  * @method \Spryker\Zed\ProductRelation\Communication\ProductRelationCommunicationFactory getFactory()
  */
-class QuasirisCatchingCategoryEventsListener extends AbstractPlugin implements EventBulkHandlerInterface
+class QuasirisCatchingProductCategoryEventsListener extends AbstractPlugin implements EventBulkHandlerInterface
 {
     use DatabaseTransactionHandlerTrait;
     private $sender;
@@ -37,29 +37,22 @@ class QuasirisCatchingCategoryEventsListener extends AbstractPlugin implements E
      */
     public function handleBulk(array $CategoryTransfer, $eventName)
     {
-        $categoryInfo = [];
         $productInfo = [];
-        
+       
 
         foreach ($CategoryTransfer as $eventTransfer) {
-            $categoryInfo[] = $eventTransfer->toArray();
+            $productInfo[] = $eventTransfer->toArray();
         }
-        $locale = $this->getFactory()->getLocaleFacede()->getCurrentLocale();
-        $productCategories = $this->getFactory()->getProductCategoryFacede()->getAbstractProductsByIdCategory($categoryInfo[0]['id_category'], $locale);
-        foreach ($productCategories as $eventTransfer) {
-            if($eventTransfer->toArray() !== null && $eventTransfer->toArray() !== '') {
-                $productInfo[] = $eventTransfer->toArray();
-            }
-        }
+
+        //get all information about product 
         $get_data = $this->mixed->getCorrectAbstractConcreteProductIds($productInfo, true);
-    
         $id = $get_data['id'];
         $type = $get_data['type'];
 
         foreach($id as $i) {
             $abstract = $this->getFactory()->getProductFacede()->findProductAbstractById($i)->toArray();
             $getConcreteProductsByAbstractProductId = $this->getFactory()->getProductFacede()->getConcreteProductsByAbstractProductId($i);
-                    
+                
             $concrete = [];
             foreach ($getConcreteProductsByAbstractProductId as $eventTransfer) {
                 if($eventTransfer->toArray() !== null && $eventTransfer->toArray() !== '') {
@@ -70,18 +63,17 @@ class QuasirisCatchingCategoryEventsListener extends AbstractPlugin implements E
             //get category information
             $locale = $this->getFactory()->getLocaleFacede()->getCurrentLocale();
             $categories = $this->mixed->getProductCategories($i, $locale);
-
+            
             $data = $this->mixed->createArrayToSend(
-                'KacperCategoryListener',
+                'QuasirisCatchingProductCategoryEventsListener',
                 $eventName,
                 $abstract,
                 $concrete,
                 $categories,
                 $i
             );
-    
-            $this->sender->getDataFromApi($data);
-            
+
+            $this->sender->getDataFromApi($data, $this->getConfig()->getMySetting());
         }
     }
 }
